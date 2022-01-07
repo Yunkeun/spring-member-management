@@ -1,6 +1,7 @@
 package com.yoonveloping.springmembermanagement;
 
 import com.yoonveloping.springmembermanagement.repository.JdbcMemberRepository;
+import com.yoonveloping.springmembermanagement.repository.JdbcTemplateMemberRepository;
 import com.yoonveloping.springmembermanagement.repository.MemberRepository;
 import com.yoonveloping.springmembermanagement.service.MemberService;
 import javax.sql.DataSource;
@@ -26,6 +27,7 @@ public class SpringConfig {
 	@Bean
 	public MemberRepository memberRepository() {
 //		return new MemoryMemberRepository();
-		return new JdbcMemberRepository(dataSource);
+//		return new JdbcMemberRepository(dataSource);
+		return new JdbcTemplateMemberRepository(dataSource);
 	}
 }
