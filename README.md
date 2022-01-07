@@ -1,6 +1,11 @@
 # spring-member-management
 
 멤버들을 관리하는 간단한 프로그램이다.
+### 버전
+java 1.0.11
+spring 2.6.2
+h2 1.4.200
+
 
 ### 비즈니스 요구 사항
 
