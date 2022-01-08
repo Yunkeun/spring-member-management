@@ -1,10 +1,9 @@
 package com.yoonveloping.springmembermanagement;
 
-import com.yoonveloping.springmembermanagement.repository.JdbcMemberRepository;
-import com.yoonveloping.springmembermanagement.repository.JdbcTemplateMemberRepository;
+import com.yoonveloping.springmembermanagement.repository.JpaMemberRepository;
 import com.yoonveloping.springmembermanagement.repository.MemberRepository;
 import com.yoonveloping.springmembermanagement.service.MemberService;
-import javax.sql.DataSource;
+import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,11 +11,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringConfig {
 
-	private DataSource dataSource;
+	private final EntityManager em;
 
 	@Autowired
-	public SpringConfig(DataSource dataSource) {
-		this.dataSource = dataSource;
+	public SpringConfig(EntityManager em) {
+		this.em = em;
 	}
 
 	@Bean
@@ -28,6 +27,7 @@ public class SpringConfig {
 	public MemberRepository memberRepository() {
 //		return new MemoryMemberRepository();
 //		return new JdbcMemberRepository(dataSource);
-		return new JdbcTemplateMemberRepository(dataSource);
+//		return new JdbcTemplateMemberRepository(dataSource);
+		return new JpaMemberRepository(em);
 	}
 }
